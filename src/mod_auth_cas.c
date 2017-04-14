@@ -1804,7 +1804,7 @@ char *getResponseFromServer (request_rec *r, cas_cfg *c, char *ticket)
 	curl_easy_setopt(curl, CURLOPT_PROTOCOLS, CURLPROTO_HTTP|CURLPROTO_HTTPS);
 #endif
 
-	curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 1L);
+	curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, FALSE);
 
 	if(apr_stat(&f, c->CASCertificatePath, APR_FINFO_TYPE, r->pool) == APR_INCOMPLETE) {
 		ap_log_rerror(APLOG_MARK, APLOG_ERR, 0, r, "MOD_AUTH_CAS: Could not load CA certificate: %s", c->CASCertificatePath);
